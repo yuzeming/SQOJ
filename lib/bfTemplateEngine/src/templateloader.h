@@ -9,7 +9,6 @@
 #include <QString>
 #include <QSettings>
 #include <QTextCodec>
-#include "template.h"
 #include <QMutex>
 
 /**
@@ -48,17 +47,6 @@ public:
 
     /** Destructor */
     virtual ~TemplateLoader();
-
-    /**
-      Get a template for a given locale.
-      This method is thread safe.
-      @param templateName base name of the template file, without suffix and without locale
-      @param locales Requested locale(s), e.g. "de_DE, en_EN". Strings in the format of
-      the HTTP header Accept-Locale may be used. Badly formatted parts in the string are silently
-      ignored.
-      @return If the template cannot be loaded, an error message is logged and an empty template is returned.
-    */
-    Template getTemplate(QString templateName, QString locales=QString());
 
 protected:
 

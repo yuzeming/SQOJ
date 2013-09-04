@@ -123,6 +123,13 @@ void HttpResponse::setCookie(const HttpCookie& cookie) {
     }
 }
 
+void HttpResponse::Redirec(QByteArray go)
+{
+    Q_ASSERT(sentHeaders==false);
+    this->setStatus(302);
+    this->setHeader(QByteArray("Location"),go);
+}
+
 QMap<QByteArray,HttpCookie>& HttpResponse::getCookies() {
     return cookies;
 }

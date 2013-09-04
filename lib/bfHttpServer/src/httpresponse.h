@@ -96,6 +96,8 @@ public:
     */
     void setCookie(const HttpCookie& cookie);
 
+    void Redirec(QByteArray go);
+
 private:
 
     /** Request headers */

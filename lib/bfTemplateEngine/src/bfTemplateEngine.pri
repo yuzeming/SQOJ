@@ -1,5 +1,7 @@
 INCLUDEPATH += $$PWD
 DEPENDPATH += $$PWD
 
-HEADERS  += $$PWD/template.h $$PWD/templateloader.h $$PWD/templatecache.h
-SOURCES  += $$PWD/template.cpp $$PWD/templateloader.cpp $$PWD/templatecache.cpp
+HEADERS  += $$PWD/templateloader.h
+SOURCES  += $$PWD/templateloader.cpp \
+    $$PWD/main.cpp
+LIBS += -lctemplate
