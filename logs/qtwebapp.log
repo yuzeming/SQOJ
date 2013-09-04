@@ -1,0 +1,7 @@
+01.09.2013 07:16:47.883 0 DEBUG 139656593815360 HttpSessionStore: Sessions expire after 3600000 milliseconds
+01.09.2013 07:16:47.883 0 DEBUG 139656593815360 StaticFileController: docroot=/home/yzm/QtWebApp/etc/docroot, encoding=UTF-8, maxAge=60000
+01.09.2013 07:16:47.883 0 DEBUG 139656593815360 StaticFileController: cache timeout=60000, size=1000000
+01.09.2013 07:16:47.883 0 DEBUG 139656593815360 ServiceHelper: Starting service
+01.09.2013 07:16:47.888 0 DEBUG 139656593815360 HttpListener: Listening on port 8080
+01.09.2013 07:16:47.888 0 DEBUG 139656593815360 You see these debug messages because the logging buffer is enabled
+01.09.2013 07:16:47.888 1 WARNING 139656593815360 ServiceHelper: Service has started
