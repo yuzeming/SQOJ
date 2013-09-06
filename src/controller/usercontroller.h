@@ -7,9 +7,9 @@
 
 class UserController : public HttpRequestHandler
 {
-public:
     Q_OBJECT
     Q_DISABLE_COPY(UserController)
+public:
     UserController();
     int Auth(QString username,QString password);
     void login(HttpRequest& request, HttpResponse& response);

@@ -9,11 +9,16 @@
 #include <QStringList>
 #include <QDir>
 #include <QSet>
+#include "httprequest.h"
+#include "httpresponse.h"
+#include "httpsession.h"
+#include <string>
 
 TemplateLoader::TemplateLoader(QSettings* settings, QObject* parent)
     : QObject(parent)
 {
     templatePath=settings->value("path",".").toString();
+    BaseRender = NULL;
     // Convert relative path to absolute, based on the directory of the config file.
 #ifdef Q_OS_WIN32
     if (QDir::isRelativePath(templatePath) && settings->format()!=QSettings::NativeFormat)
@@ -41,18 +46,19 @@ QString TemplateLoader::tryFile(QString localizedName) {
     QString fileName=templatePath+"/"+localizedName+fileNameSuffix;
     qDebug("TemplateCache: trying file %s",qPrintable(fileName));
     QFile file(fileName);
-    if (file.exists()) {
-        file.open(QIODevice::ReadOnly);
-        QString document=textCodec->toUnicode(file.readAll());
-        file.close();
-        if (file.error()) {
-            qCritical("TemplateLoader: cannot load file %s, %s",qPrintable(fileName),qPrintable(file.errorString()));
-            return "";
-        }
-        else {
-            return document;
-        }
-    }
+    if (file.exists())
+        return fileName;
     return "";
 }
 
+
+QByteArray TemplateLoader::Render(TemplateDictionary &dict, QString localizedName,HttpSession &session)
+{
+    QString f = tryFile(localizedName);
+    if (f=="")  return "";
+    std::string output;
+    ExpandTemplate(f.toStdString(),DO_NOT_STRIP,&dict,&output);
+    if (BaseRender)
+        return BaseRender(QByteArray(output.c_str()),dict,session);
+    return QByteArray(output.c_str());
+}

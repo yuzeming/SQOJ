@@ -3,6 +3,8 @@ TARGET = QtWebApp
 TEMPLATE = app
 CONFIG += CONSOLE
 
+QMAKE_CXXFLAGS += -std=gnu++0x
+
 CONFIG(debug, debug|release) {
   DEFINES += SUPERVERBOSE
 }
@@ -39,3 +41,4 @@ OTHER_FILES += \
 include(../lib/qtservice/src/qtservice.pri)
 include(../lib/bfLogging/src/bfLogging.pri)
 include(../lib/bfHttpServer/src/bfHttpServer.pri)
+include(../lib/bfTemplateEngine/src/bfTemplateEngine.pri)

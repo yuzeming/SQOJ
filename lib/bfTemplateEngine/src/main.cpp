@@ -1,7 +1,7 @@
 #include "templateloader.h"
 
 
-int main()
+int _main()
 {
 
 }

@@ -9,6 +9,7 @@
 #include "httplistener.h"
 #include "requestmapper.h"
 #include "staticfilecontroller.h"
+#include "templateloader.h"
 #include <QDir>
 
 /** Name of this application */
@@ -30,12 +31,18 @@ void Startup::start() {
     app->setOrganizationName(ORGANISATION);
     QString configFileName=Static::getConfigDir()+"/"+QCoreApplication::applicationName()+".ini";
 
+    QSettings* templateSettings=new QSettings(configFileName,QSettings::IniFormat,app);
+    templateSettings->beginGroup("templates");
+    Static::templateLoader=new TemplateLoader(templateSettings,app);
+
+    //Disable for debug
     // Configure logging
+    /*
     QSettings* logSettings=new QSettings(configFileName,QSettings::IniFormat,app);
     logSettings->beginGroup("logging");
     Logger* logger=new FileLogger(logSettings,10000,app);
     logger->installMsgHandler();
-
+    */
     // Configure session store
     QSettings* sessionSettings=new QSettings(configFileName,QSettings::IniFormat,app);
     sessionSettings->beginGroup("sessions");
@@ -52,9 +59,9 @@ void Startup::start() {
     listenerSettings->beginGroup("listener");
     listener=new HttpListener(listenerSettings,new RequestMapper(app),app);
 
-    if (logSettings->value("bufferSize",0).toInt()>0 && logSettings->value("minLevel",0).toInt()>0) {
+    /*if (logSettings->value("bufferSize",0).toInt()>0 && logSettings->value("minLevel",0).toInt()>0) {
         qDebug("You see these debug messages because the logging buffer is enabled");
-    }
+    }*/
     qWarning("ServiceHelper: Service has started");
 }
 

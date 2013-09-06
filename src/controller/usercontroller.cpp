@@ -1,12 +1,14 @@
 #include "usercontroller.h"
+#include "templateloader.h"
 #include "../static.h"
+#include <iostream>
 UserController::UserController()
 {
 }
 
 int UserController::Auth(QString username, QString password)
 {
-    return 1;
+    return username=="yzm"&&password=="a";
 }
 
 void UserController::login(HttpRequest &request, HttpResponse &response)
@@ -23,11 +25,15 @@ void UserController::login(HttpRequest &request, HttpResponse &response)
         session.set("userid",UID);
         return response.Redirec(go);
     }
-    return ;
-
+    TemplateDictionary dict("userlogin");
+    dict.SetValueAndShowSection("error","login failed","error_div");
+    return response.write(Static::templateLoader->Render(dict,"login",session));
 }
 
 
 void UserController::service(HttpRequest &request, HttpResponse &response)
 {
+    if (request.getPath().startsWith("/user/login"))
+        return login(request,response);
+    return response.Error404();
 }

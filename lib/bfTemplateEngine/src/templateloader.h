@@ -10,6 +10,12 @@
 #include <QSettings>
 #include <QTextCodec>
 #include <QMutex>
+#include <ctemplate/template.h>
+#include "httprequest.h"
+#include "httpresponse.h"
+#include "httpsession.h"
+
+using namespace ctemplate;
 
 /**
   Loads localized versions of template files. If the caller requests a file with the
@@ -33,29 +39,29 @@
   @see TemplateCache
 */
 
+
+
 class TemplateLoader : public QObject {
     Q_OBJECT
-    Q_DISABLE_COPY(TemplateLoader);
+    Q_DISABLE_COPY(TemplateLoader)
 public:
-
+    typedef QByteArray (*FuncBaseRender)(QByteArray content, TemplateDictionary& dict, HttpSession& session) ;
     /**
       Constructor.
       @param settings configurations settings
       @param parent parent object
     */
     TemplateLoader(QSettings* settings, QObject* parent=0);
-
     /** Destructor */
     virtual ~TemplateLoader();
 
+    QByteArray Render(TemplateDictionary& dict, QString localizedName, HttpSession &session);
+    QString tryFile(QString localizedName);
+    FuncBaseRender BaseRender;
+
 protected:
 
-    /**
-      Try to get a file from cache or filesystem.
-      @param localizedName Name of the template with locale to find
-      @return The template document, or empty string if not found
-    */
-    virtual QString tryFile(QString localizedName);
+
 
     /** Directory where the templates are searched */
     QString templatePath;

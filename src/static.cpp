@@ -15,6 +15,8 @@ HttpSessionStore* Static::sessionStore=0;
 
 StaticFileController* Static::staticFileController=0;
 
+TemplateLoader* Static::templateLoader=0;
+
 QString Static::getConfigFileName() {
     return QString("%1/%2.ini").arg(getConfigDir()).arg(QCoreApplication::applicationName());
 }
@@ -26,6 +28,7 @@ QString Static::getConfigDir() {
     // Search config file
 
     QString binDir=QCoreApplication::applicationDirPath();
+    //QString binDir = QDir::currentPath();
     QString organization=QCoreApplication::organizationName();
     QString configFileName=QCoreApplication::applicationName()+".ini";
 
@@ -36,6 +39,8 @@ QString Static::getConfigDir() {
     searchList.append(QDir::rootPath()+"etc/xdg/"+organization);
     searchList.append(QDir::rootPath()+"etc/opt");
     searchList.append(QDir::rootPath()+"etc");
+    // TODO: TEST ONLY!!
+    searchList.append("/home/yzm/SQOJ/etc");
 
     foreach (QString dir, searchList) {
         QFile file(dir+"/"+configFileName);

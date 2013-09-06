@@ -9,6 +9,7 @@
 #include <QString>
 #include "httpsessionstore.h"
 #include "staticfilecontroller.h"
+#include "templateloader.h"
 
 /**
   This class contains some static resources that are used by the application.
@@ -50,6 +51,8 @@ public:
 
     /** Controller for static files */
     static StaticFileController* staticFileController;
+
+    static TemplateLoader* templateLoader;
 
 private:
 

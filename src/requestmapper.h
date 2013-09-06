@@ -7,6 +7,7 @@
 #define REQUESTMAPPER_H
 
 #include "httprequesthandler.h"
+#include "templateloader.h"
 
 /**
   The request mapper dispatches incoming HTTP requests to controller classes
@@ -30,7 +31,7 @@ public:
       @param response Must be used to return the response
     */
     void service(HttpRequest& request, HttpResponse& response);
-
+    static QByteArray BaseRender(QByteArray content, TemplateDictionary& dict, HttpSession& session);
 };
 
 #endif // REQUESTMAPPER_H

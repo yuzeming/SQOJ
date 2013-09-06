@@ -5,3 +5,10 @@
 01.09.2013 07:16:47.888 0 DEBUG 139656593815360 HttpListener: Listening on port 8080
 01.09.2013 07:16:47.888 0 DEBUG 139656593815360 You see these debug messages because the logging buffer is enabled
 01.09.2013 07:16:47.888 1 WARNING 139656593815360 ServiceHelper: Service has started
+06.09.2013 04:32:27.444 0 DEBUG 140147295168320 HttpSessionStore: Sessions expire after 3600000 milliseconds
+06.09.2013 04:32:27.444 0 DEBUG 140147295168320 StaticFileController: docroot=/home/yzm/SQOJ/etc/docroot, encoding=UTF-8, maxAge=60000
+06.09.2013 04:32:27.444 0 DEBUG 140147295168320 StaticFileController: cache timeout=60000, size=1000000
+06.09.2013 04:32:27.444 0 DEBUG 140147295168320 ServiceHelper: Starting service
+06.09.2013 04:32:27.448 0 DEBUG 140147295168320 HttpListener: Listening on port 8080
+06.09.2013 04:32:27.449 0 DEBUG 140147295168320 You see these debug messages because the logging buffer is enabled
+06.09.2013 04:32:27.449 1 WARNING 140147295168320 ServiceHelper: Service has started

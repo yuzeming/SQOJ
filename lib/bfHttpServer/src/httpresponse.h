@@ -97,6 +97,7 @@ public:
     void setCookie(const HttpCookie& cookie);
 
     void Redirec(QByteArray go);
+    void Error404();
 
 private:
 

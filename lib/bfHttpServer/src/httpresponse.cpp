@@ -130,6 +130,13 @@ void HttpResponse::Redirec(QByteArray go)
     this->setHeader(QByteArray("Location"),go);
 }
 
+void HttpResponse::Error404()
+{
+    Q_ASSERT(sentHeaders==false);
+    this->setStatus(404);
+    this->write("<h2>404 Not Found</h2>");
+}
+
 QMap<QByteArray,HttpCookie>& HttpResponse::getCookies() {
     return cookies;
 }
