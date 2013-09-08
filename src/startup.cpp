@@ -10,6 +10,7 @@
 #include "requestmapper.h"
 #include "staticfilecontroller.h"
 #include "templateloader.h"
+#include "model/db.h"
 #include <QDir>
 
 /** Name of this application */
@@ -58,6 +59,11 @@ void Startup::start() {
     QSettings* listenerSettings=new QSettings(configFileName,QSettings::IniFormat,app);
     listenerSettings->beginGroup("listener");
     listener=new HttpListener(listenerSettings,new RequestMapper(app),app);
+
+    // Configure and  start the db Driver
+    qDebug("DB : Starting service");
+    QSettings * dbSettings = new QSettings(configFileName,QSettings::IniFormat,app);
+    db = new StaticDB(dbSettings,app);
 
     /*if (logSettings->value("bufferSize",0).toInt()>0 && logSettings->value("minLevel",0).toInt()>0) {
         qDebug("You see these debug messages because the logging buffer is enabled");

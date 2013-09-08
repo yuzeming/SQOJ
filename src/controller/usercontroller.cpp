@@ -23,6 +23,7 @@ void UserController::login(HttpRequest &request, HttpResponse &response)
     if (UID>0)
     {
         session.set("userid",UID);
+        session.set("user",user);
         return response.Redirec(go);
     }
     TemplateDictionary dict("userlogin");

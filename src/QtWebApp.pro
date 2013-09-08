@@ -17,7 +17,9 @@ HEADERS = \
     controller/formcontroller.h \
     controller/fileuploadcontroller.h \
     controller/sessioncontroller.h \
-    controller/usercontroller.h
+    controller/usercontroller.h \
+    model/usermodel.h \
+    model/db.h
 
 SOURCES = main.cpp \
     static.cpp \
@@ -27,7 +29,9 @@ SOURCES = main.cpp \
     controller/formcontroller.cpp \
     controller/fileuploadcontroller.cpp \
     controller/sessioncontroller.cpp \
-    controller/usercontroller.cpp
+    controller/usercontroller.cpp \
+    model/usermodel.cpp \
+    model/db.cpp
 
 OTHER_FILES += \
     ../Doxyfile \

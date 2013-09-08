@@ -17,6 +17,8 @@ StaticFileController* Static::staticFileController=0;
 
 TemplateLoader* Static::templateLoader=0;
 
+StaticDB* Static::db=0;
+
 QString Static::getConfigFileName() {
     return QString("%1/%2.ini").arg(getConfigDir()).arg(QCoreApplication::applicationName());
 }

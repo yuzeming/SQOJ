@@ -49,7 +49,18 @@ QByteArray RequestMapper::BaseRender(QByteArray content, TemplateDictionary &dic
 {
     QString f = Static::templateLoader->tryFile("base");
     if (f=="") return content;
+
+    dict.SetValue("TITLE","SQOJ");
     dict.SetValue("CONTENT",content.data());
+    QMap<QByteArray,QVariant>  map=session.getAll();
+    for (QMap<QByteArray,QVariant>::Iterator it=map.begin();it!=map.end();++it)
+        dict.SetValue(("SESSION_"+it.key().toUpper()).data(),it.value().toByteArray().data());
+
+    if (session.get("user").isNull())
+        dict.ShowSection("LOGIN");
+    else
+        dict.ShowSection("LOGOUT");
+
     std::string output;
     ExpandTemplate(f.toStdString(),DO_NOT_STRIP,&dict,&output);
     return QByteArray(output.c_str());

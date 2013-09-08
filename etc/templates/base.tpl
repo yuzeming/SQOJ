@@ -26,7 +26,8 @@
 			{{/LOGIN}}
 			
 			{{#LOGOUT}}
-			<li class="page_item">{{SESSION_USER}}</li>
+			<li class="page_item"><a href="/user/show?uid={{SESSION_USERID}}/">{{SESSION_USER}}</a></li>
+			<li class="page_item" ><a href="/user/logout">登出</a></li>
 			{{/LOGOUT}}
 			
 		</ul>
