@@ -1,5 +1,5 @@
 QT = core network
-TARGET = QtWebApp
+TARGET = SQOJ
 TEMPLATE = app
 CONFIG += CONSOLE
 
@@ -19,7 +19,8 @@ HEADERS = \
     controller/sessioncontroller.h \
     controller/usercontroller.h \
     model/usermodel.h \
-    model/db.h
+    model/db.h \
+    model/probmodel.h
 
 SOURCES = main.cpp \
     static.cpp \
@@ -31,7 +32,8 @@ SOURCES = main.cpp \
     controller/sessioncontroller.cpp \
     controller/usercontroller.cpp \
     model/usermodel.cpp \
-    model/db.cpp
+    model/db.cpp \
+    model/probmodel.cpp
 
 OTHER_FILES += \
     ../Doxyfile \

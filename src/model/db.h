@@ -1,14 +1,20 @@
 #ifndef DB_H
 #define DB_H
 
-#include "mongo/client/dbclient.h"
+#include <QtSql/QSql>
+#include <QtSql/QSqlDatabase>
+#include <QObject>
+#include <QSettings>
 
-using namespace mongo;
-
-class StaticDB
+class ModelBase: public QObject
 {
+    Q_OBJECT
+    Q_DISABLE_COPY(ModelBase)
 public:
-   static mongo::DBClientConnection *c;
+    ModelBase(QSettings* settings=0, QObject* parent=0);
+    static QSqlDatabase db;
+    static QString dbname;
+    virtual bool Save();
 };
 
 #endif // DB_H

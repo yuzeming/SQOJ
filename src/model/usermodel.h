@@ -2,13 +2,18 @@
 #define USERMODEL_H
 
 #include <QObject>
-
-class UserModel
+#include "db.h"
+class UserModel :public ModelBase
 {
+    Q_OBJECT
 public:
-    UserModel();
-    int AuthMode();
-
+    QString username;
+    QString password;
+    int isAdmin;
+    int id;
+    UserModel(QString u=QString(),QString p=QString(),int a=0);
+    bool Save();
+    static UserModel &AuthUser(QString u,QString p);
 };
 
 #endif // USERMODEL_H

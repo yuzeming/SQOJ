@@ -55,13 +55,12 @@ public:
 
     static TemplateLoader* templateLoader;
 
-    static StaticDB * db;
+    static ModelBase * db;
 
 private:
 
     /** Directory of the main config file */
     static QString configDir;
-
     static QString templateDir;
 
 };

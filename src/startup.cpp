@@ -11,6 +11,7 @@
 #include "staticfilecontroller.h"
 #include "templateloader.h"
 #include "model/db.h"
+#include "model/probmodel.h"
 #include <QDir>
 
 /** Name of this application */
@@ -63,7 +64,14 @@ void Startup::start() {
     // Configure and  start the db Driver
     qDebug("DB : Starting service");
     QSettings * dbSettings = new QSettings(configFileName,QSettings::IniFormat,app);
-    db = new StaticDB(dbSettings,app);
+    dbSettings->beginGroup("db");
+    Static::db = new ModelBase(dbSettings,app);
+
+    qDebug("HTML : Read Prob Root");
+    QSettings * HTMLSettings = new QSettings(configFileName,QSettings::IniFormat,app);
+    HTMLSettings->beginGroup("html");
+    ProbModel::HTMLDIR = HTMLSettings->value("html").toString();
+
 
     /*if (logSettings->value("bufferSize",0).toInt()>0 && logSettings->value("minLevel",0).toInt()>0) {
         qDebug("You see these debug messages because the logging buffer is enabled");

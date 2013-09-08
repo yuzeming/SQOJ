@@ -41,7 +41,7 @@
 
 class StaticFileController : public HttpRequestHandler  {
     Q_OBJECT
-    Q_DISABLE_COPY(StaticFileController);
+    Q_DISABLE_COPY(StaticFileController)
 public:
 
     /** Constructor */
