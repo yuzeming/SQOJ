@@ -1,0 +1,53 @@
+//Run JSON
+{
+	pid:"TEST_1",
+	rid:12345,
+	src:"a.cpp",
+	lang:"cpp"
+	user : "yuzeming"
+	time : "2012-10-19 12:20:10"
+}
+
+//Prob JSON
+{
+	name:"TEST_1",
+	time:1,
+	men:128,
+	comp:none,
+	data : [
+		["a1.in","a1.out"],
+		["a2.in","a2.out"]
+	]
+}
+
+//Result JSON
+{
+	rid:12345,
+	compile : none,
+	result:"Accepted",
+	detail : [
+		[0.5,32,"Right"],
+		[0.5,32,"Right"]
+		]
+}
+
+//Conf JSOM
+{
+	name : "judge_0",
+	key : "AAAAA",
+	tmpdir : "/tmp/",
+	rundir : "/tmp/",
+	datadir : "/home/yzm/data",
+	compiler : {
+		cpp : ["g++ {{SRC}} -g -Wall -o {{EXE}}","{{EXE}}"],
+		java : ["javac {{SRC}} -g -Wall -o {{EXE}}.class","java {{EXE}}.class"]
+		python : ["python -c {{SRC}} {{EXE}}.pyc","python {{EXE}}.pyc"]
+	}
+}
+
+//User JSON
+{
+	username : "yzeming",
+	password : "a",
+	isAdmin : true,
+}
