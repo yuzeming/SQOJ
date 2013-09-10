@@ -5,6 +5,7 @@
 
 class ProbModel :public ModelBase
 {
+    Q_OBJECT
 public:
     static QString HTMLDIR;
     QString name;
@@ -12,6 +13,7 @@ public:
     int show;
     QString readHTML();
     QString readConf();
+    QStringList GetList(int page = 1,int item=30);
     ProbModel(QString _name=QString(),int _show=1);
     static ProbModel &Find(QString name);
     bool Save();

@@ -9,7 +9,7 @@
 class ModelBase: public QObject
 {
     Q_OBJECT
-    Q_DISABLE_COPY(ModelBase)
+//    Q_DISABLE_COPY(ModelBase)
 public:
     ModelBase(QSettings* settings=0, QObject* parent=0);
     static QSqlDatabase db;

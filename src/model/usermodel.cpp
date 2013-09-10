@@ -1,5 +1,5 @@
-#include "usermodel.h"
 #include "db.h"
+#include "usermodel.h"
 #include <QStringList>
 #include <QtSql/QSqlQuery>
 UserModel::UserModel(QString u, QString p, int a) : ModelBase()

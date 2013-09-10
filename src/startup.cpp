@@ -12,16 +12,17 @@
 #include "templateloader.h"
 #include "model/db.h"
 #include "model/probmodel.h"
+#include "model/usermodel.h"
 #include <QDir>
 
 /** Name of this application */
-#define APPNAME "QtWebApp"
+#define APPNAME "SQOJ"
 
 /** Publisher of this application */
-#define ORGANISATION "Butterfly"
+#define ORGANISATION "yuzeming@gmail.com"
 
 /** Short description of this application */
-#define DESCRIPTION "Web service based on Qt"
+#define DESCRIPTION "StarQoQ Online Judge"
 
 /** The HTTP listener of the application */
 HttpListener* listener;
