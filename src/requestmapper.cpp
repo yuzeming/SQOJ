@@ -11,6 +11,7 @@
 #include "controller/fileuploadcontroller.h"
 #include "controller/sessioncontroller.h"
 #include "controller/usercontroller.h"
+#include "controller/probcontroller.h"
 #include <iostream>
 
 RequestMapper::RequestMapper(QObject* parent)
@@ -37,7 +38,10 @@ void RequestMapper::service(HttpRequest& request, HttpResponse& response) {
     else if (path.startsWith("/session")) {
         SessionController().service(request, response);
     }
-
+    else if (path.startsWith("/problem"))
+    {
+        ProbController().service(request,response);
+    }
     // All other pathes are mapped to the static file controller.
     else {
         Static::staticFileController->service(request, response);
@@ -56,7 +60,7 @@ QByteArray RequestMapper::BaseRender(QByteArray content, TemplateDictionary &dic
     for (QMap<QByteArray,QVariant>::Iterator it=map.begin();it!=map.end();++it)
         dict.SetValue(("SESSION_"+it.key().toUpper()).data(),it.value().toByteArray().data());
 
-    if (session.get("user").isNull())
+    if (session.get("USER_ID").isNull())
         dict.ShowSection("LOGIN");
     else
         dict.ShowSection("LOGOUT");

@@ -11,9 +11,13 @@ public:
     QString password;
     int isAdmin;
     int id;
+
     UserModel(QString u=QString(),QString p=QString(),int a=0);
+    UserModel(const UserModel& copy);
     bool Save();
+
     static UserModel &AuthUser(QString u,QString p);
+    static UserModel &FindByID(int id);
 };
 
 #endif // USERMODEL_H

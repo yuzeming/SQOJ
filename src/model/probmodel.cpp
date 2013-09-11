@@ -2,9 +2,10 @@
 #include <QtSql/QSqlQuery>
 #include <QStringList>
 #include <QDir>
-QString ProbModel::HTMLDIR = QString();
 
-ProbModel::ProbModel(QString _name, int _show)
+QDir ProbModel::ProbRoot = QDir();
+
+ProbModel::ProbModel(QString _name, int _show) : ModelBase()
 {
     QSqlQuery query;
     QStringList tabls=db.tables();
@@ -22,17 +23,40 @@ ProbModel::ProbModel(QString _name, int _show)
     id = 0;
 }
 
+ProbModel::ProbModel(const ProbModel &copy) : ModelBase(copy)
+{
+    name=copy.name;
+    id=copy.id;
+    show=copy.show;
+}
+
 ProbModel& ProbModel::Find(QString name)
 {
     QSqlQuery q;
+    ProbModel * ret=new ProbModel();
     q.prepare("SELECT id,show FROM problem WHERE name=:n LIMIT 1");
     q.bindValue(":n",name);
     q.exec();
-    ProbModel * ret=new ProbModel();
     if (q.next())
     {
         ret->id=q.value(0).toInt();
         ret->name=name;
+        ret->show=q.value(1).toInt();
+    }
+    return *ret;
+}
+
+ProbModel &ProbModel::FindByID(int id)
+{
+    QSqlQuery q;
+    ProbModel * ret=new ProbModel();
+    q.prepare("SELECT name,show FROM problem WHERE id=:id LIMIT 1");
+    q.bindValue(":id",id);
+    q.exec();
+    if (q.next())
+    {
+        ret->id=id;
+        ret->name=q.value(0).toString();
         ret->show=q.value(1).toInt();
     }
     return *ret;
@@ -53,22 +77,31 @@ bool ProbModel::Save()
     return q.exec();
 }
 
+QString GetFileContent(QString fname)
+{
+    QFile f(fname);
+    if (f.exists())
+    {
+        f.open(QIODevice::ReadOnly);
+        return f.readAll();
+    }
+    return "404 NOT FOUND";
+}
+
 QString ProbModel::readHTML()
 {
     if (name=="")   return "Set NAME First!";
-    QFile html(QDir::cleanPath(HTMLDIR)+name+"/index.html");
-    if (html.exists())
-        return html.readAll();
-    return "404 NOT FOUND";
+    QDir f((ProbRoot));
+    if (!f.cd(name))    return "Dir Not Find";
+    return GetFileContent(f.filePath("index.html"));
 }
 
 QString ProbModel::readConf()
 {
-    if (name=="")   return "";
-    QFile json(QDir::cleanPath(HTMLDIR)+name+"/config.json");
-    if (json.exists())
-        return json.readAll();
-    return "";
+    if (name=="")   return "Set NAME First!";
+    QDir f((ProbRoot));
+    if (!f.cd(name))    return "Dir Not Find";
+    return GetFileContent(f.filePath("config.json"));
 }
 
 QStringList ProbModel::GetList(int page, int item)

@@ -70,8 +70,8 @@ void Startup::start() {
 
     qDebug("HTML : Read Prob Root");
     QSettings * HTMLSettings = new QSettings(configFileName,QSettings::IniFormat,app);
-    HTMLSettings->beginGroup("html");
-    ProbModel::HTMLDIR = HTMLSettings->value("html").toString();
+    HTMLSettings->beginGroup("prob");
+    ProbModel::ProbRoot = HTMLSettings->value("probRoot","").toString();
 
 
     /*if (logSettings->value("bufferSize",0).toInt()>0 && logSettings->value("minLevel",0).toInt()>0) {

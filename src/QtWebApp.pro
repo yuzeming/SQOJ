@@ -20,7 +20,10 @@ HEADERS = \
     controller/usercontroller.h \
     model/usermodel.h \
     model/probmodel.h \
-    model/db.h
+    model/db.h \
+    controller/probcontroller.h \
+    model/submitmodel.h \
+    controller/submitcontroller.h
 
 SOURCES = main.cpp \
     static.cpp \
@@ -33,7 +36,10 @@ SOURCES = main.cpp \
     controller/usercontroller.cpp \
     model/usermodel.cpp \
     model/probmodel.cpp \
-    model/db.cpp
+    model/db.cpp \
+    controller/probcontroller.cpp \
+    model/submitmodel.cpp \
+    controller/submitcontroller.cpp
 
 OTHER_FILES += \
     ../etc/QtWebApp.ini \

@@ -22,14 +22,15 @@
 			<li class="page_item" ><a href="/problem/list">题目</a></li>
 			<li class="page_item" ><a href="/contest/list">比赛</a></li>
 			{{#LOGIN}}
-			<li class="page_item" ><a href="/user/login">登陆</a></li>
+			<li class="page_item" ><a href="/user/login/">登陆</a></li>
+			<li class="page_item" ><a href="/user/reg/">注册</a></li>
 			{{/LOGIN}}
 			
 			{{#LOGOUT}}
-			<li class="page_item"><a href="/user/show?uid={{SESSION_USERID}}/">{{SESSION_USER}}</a></li>
-			<li class="page_item" ><a href="/user/logout">登出</a></li>
+			<li class="page_item"><a href="/user/show/{{SESSION_USER_ID}}/">{{SESSION_USER_NAME}}</a></li>
+			<li class="page_item" ><a href="/user/logout/">登出</a></li>
 			{{/LOGOUT}}
-			
+			 
 		</ul>
 		</div>
 	</div>
@@ -39,6 +40,7 @@
 	{{CONTENT}}
 </div>
 
+<div class="space"></div>
 <div id="footer">
 	<div class="footer">
 			<p class="fooleft">	YuZeming@Gmail.com SQOJ	</p>
