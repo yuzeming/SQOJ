@@ -4,6 +4,7 @@
 */
 
 #include "httpresponse.h"
+#include <QFileInfo>
 
 HttpResponse::HttpResponse(QTcpSocket* socket) {
     this->socket=socket;
@@ -135,6 +136,18 @@ void HttpResponse::Error404()
     Q_ASSERT(sentHeaders==false);
     this->setStatus(404);
     this->write("<h2>404 Not Found</h2>");
+}
+
+void HttpResponse::SendFile(QFile &f)
+{
+    Q_ASSERT(sentHeaders==false);
+    if (!f.exists() || !f.open(QIODevice::ReadOnly))
+        return Error404();
+    QFileInfo fi(f.fileName());
+    this->setHeader("Content-Disposition", QString("attachment; filename="+fi.fileName()).toStdString().c_str());
+    while (!f.atEnd())
+        this->write(f.read(65535));
+    f.close();
 }
 
 QMap<QByteArray,HttpCookie>& HttpResponse::getCookies() {

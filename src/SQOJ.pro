@@ -3,7 +3,7 @@ TARGET = SQOJ
 TEMPLATE = app
 CONFIG += CONSOLE
 
-QMAKE_CXXFLAGS += -std=gnu++0x
+#QMAKE_CXXFLAGS += -std=gnu++0x
 
 CONFIG(debug, debug|release) {
   DEFINES += SUPERVERBOSE
@@ -23,7 +23,8 @@ HEADERS = \
     model/db.h \
     controller/probcontroller.h \
     model/submitmodel.h \
-    controller/submitcontroller.h
+    controller/submitcontroller.h \
+    controller/judgecontroller.h
 
 SOURCES = main.cpp \
     static.cpp \
@@ -39,7 +40,8 @@ SOURCES = main.cpp \
     model/db.cpp \
     controller/probcontroller.cpp \
     model/submitmodel.cpp \
-    controller/submitcontroller.cpp
+    controller/submitcontroller.cpp \
+    controller/judgecontroller.cpp
 
 OTHER_FILES += \
     ../etc/QtWebApp.ini \

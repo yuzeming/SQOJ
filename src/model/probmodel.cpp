@@ -67,7 +67,7 @@ bool ProbModel::Save()
     QSqlQuery q;
     if (id != 0)
     {
-        q.prepare("UPDATA problem SET name =:n ,show = :s WHERE id = :i");
+        q.prepare("UPDATE problem SET name =:n ,show = :s WHERE id = :i");
         q.bindValue(":i",id);
     }
     else

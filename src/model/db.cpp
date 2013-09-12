@@ -10,7 +10,7 @@ ModelBase::ModelBase(QSettings *settings, QObject *parent) : QObject(parent)
     if (settings)
     {
         db = QSqlDatabase::addDatabase("QSQLITE");
-        dbname = settings->value("dbname","sqoj.db").toString();
+        dbname = settings->value("dbname","./sqoj.db").toString();
         db.setDatabaseName(dbname);
         qDebug() <<"Use "<<dbname <<" DB";
         Q_ASSERT(db.open());

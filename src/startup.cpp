@@ -13,6 +13,8 @@
 #include "model/db.h"
 #include "model/probmodel.h"
 #include "model/usermodel.h"
+#include "model/submitmodel.h"
+#include "controller/judgecontroller.h"
 #include <QDir>
 
 /** Name of this application */
@@ -71,8 +73,13 @@ void Startup::start() {
     qDebug("HTML : Read Prob Root");
     QSettings * HTMLSettings = new QSettings(configFileName,QSettings::IniFormat,app);
     HTMLSettings->beginGroup("prob");
-    ProbModel::ProbRoot = HTMLSettings->value("probRoot","").toString();
+    ProbModel::ProbRoot = HTMLSettings->value("probRoot","./prob").toString();
 
+    qDebug("Data : Read Data Root");
+    QSettings * DataSettings = new QSettings(configFileName,QSettings::IniFormat,app);
+    DataSettings->beginGroup("prob");
+    JudgeController::DataRoot = DataSettings->value("dataRoot","./data").toString();
+    JudgeController::JudgeKey = DataSettings->value("judgeKey","").toString();
 
     /*if (logSettings->value("bufferSize",0).toInt()>0 && logSettings->value("minLevel",0).toInt()>0) {
         qDebug("You see these debug messages because the logging buffer is enabled");

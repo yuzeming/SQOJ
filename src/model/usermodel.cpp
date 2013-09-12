@@ -37,7 +37,7 @@ bool UserModel::Save()
     QSqlQuery q;
     if (id != 0)
     {
-        q.prepare("UPDATA user SET username =:u ,password =:p ,isadmin =:a WHERE id =:i");
+        q.prepare("UPDATE user SET username =:u ,password =:p ,isadmin =:a WHERE id =:i");
         q.bindValue(":i",id);
     }
     else

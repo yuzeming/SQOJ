@@ -13,7 +13,6 @@ public:
     SubmitController();
     void show(HttpRequest &request, HttpResponse &response);
     void list(HttpRequest &request, HttpResponse &response);
-    void setRes(HttpRequest &request, HttpResponse &response);
     void service(HttpRequest &request, HttpResponse &response);
 };
 

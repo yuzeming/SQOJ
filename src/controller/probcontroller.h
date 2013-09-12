@@ -22,4 +22,6 @@ public slots:
     
 };
 
+QString GetLastDir(QString path);
+
 #endif // PROBCONTROLLER_H

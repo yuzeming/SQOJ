@@ -21,7 +21,7 @@ public:
     SubmitModel(const SubmitModel &copy);
     bool Save();
     static SubmitModel &FindByID(int id);
-    QVector<int> GetIDByState(int state,int limit=30);
+    static QVector<int> GetID(int uid=-1,int pid=-1,int state=-1,int limit=30);
 };
 
 #endif // SUBMITMODEL_H

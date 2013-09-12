@@ -48,7 +48,7 @@ bool SubmitModel::Save()
     QSqlQuery q;
     if (id != 0)
     {
-        q.prepare("UPDATA submit SET pid =:pid ,uid = :uid ,state=:state,src=:src,res=:res,compRes=:compRes lang=:lang WHERE id = :i");
+        q.prepare("UPDATE submit SET pid =:pid ,uid = :uid ,state=:state,src=:src,res=:res,compRes=:compRes,lang=:lang WHERE id = :i");
         q.bindValue(":i",id);
     }
     else
@@ -87,12 +87,24 @@ SubmitModel &SubmitModel::FindByID(int id)
     return *ret;
 }
 
-QVector<int> SubmitModel::GetIDByState(int state,int limit)
+QVector<int> SubmitModel::GetID(int uid, int pid, int state, int limit)
 {
     QSqlQuery q;
-    q.prepare("SELECT id FROM submit WHERE state=:state LIMIT :limit");
-    q.bindValue(":state",state);
+    QString WHERE;
+    if (uid!=-1)
+        WHERE += "and uid=:uid ";
+    if (pid!=-1)
+        WHERE += "and pid=:pid ";
+    if (state!=-1)
+        WHERE +="and state=:state ";
+    if (WHERE.startsWith("and"))
+        WHERE.remove(0,3);
+    q.prepare("SELECT id FROM submit WHERE "+WHERE+" LIMIT :limit");
+    if (uid!=-1) q.bindValue(":uid",uid);
+    if (pid!=-1) q.bindValue(":pid",pid);
+    if (state!=-1) q.bindValue(":state",state);
     q.bindValue(":limit",limit);
+    q.exec();
     QVector<int> ret;
     while (q.next())
         ret.push_back(q.value(0).toInt());

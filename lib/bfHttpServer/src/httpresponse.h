@@ -9,6 +9,7 @@
 #include <QMap>
 #include <QString>
 #include <QTcpSocket>
+#include <QFile>
 #include "httpcookie.h"
 
 /**
@@ -99,6 +100,7 @@ public:
     void Redirec(QByteArray go);
     void Error404();
 
+    void SendFile(QFile &f);
 private:
 
     /** Request headers */

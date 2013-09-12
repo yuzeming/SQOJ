@@ -30,7 +30,6 @@ QString Static::getConfigDir() {
     // Search config file
 
     QString binDir=QCoreApplication::applicationDirPath();
-    //QString binDir = QDir::currentPath();
     QString organization=QCoreApplication::organizationName();
     QString configFileName=QCoreApplication::applicationName()+".ini";
 
@@ -41,6 +40,7 @@ QString Static::getConfigDir() {
     searchList.append(QDir::rootPath()+"etc/xdg/"+organization);
     searchList.append(QDir::rootPath()+"etc/opt");
     searchList.append(QDir::rootPath()+"etc");
+    searchList.append(QDir::currentPath());
     // TODO: TEST ONLY!!
     searchList.append("/home/yzm/SQOJ/etc");
 
