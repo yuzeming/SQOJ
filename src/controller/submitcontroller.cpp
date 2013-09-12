@@ -32,6 +32,7 @@ void SubmitController::show(HttpRequest &request, HttpResponse &response)
     dict.SetValue("SRC",sm.src.data());
     dict.SetValue("RES",sm.res.toStdString().c_str());
     dict.SetValue("USER",um.username.toStdString().c_str());
+    dict.SetValue("LANG",sm.lang.toStdString().c_str());
     dict.SetValue("PROB",pm.name.toStdString().c_str());
     if (sm.state == 0)
         dict.SetValue("STATE",State[sm.state].data());

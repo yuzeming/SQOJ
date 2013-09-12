@@ -35,9 +35,10 @@ void JudgeController::GetTask(HttpRequest &request, HttpResponse &response)
     if (id.size()==1)
     {
         SubmitModel sm=SubmitModel::FindByID(id[0]);
+        ProbModel pm = ProbModel::FindByID(pid);
         QJsonObject obj;
         obj["id"]=sm.id;
-        obj["pid"]=sm.pid;
+        obj["pname"]=pm.name;
         obj["lang"]=sm.lang;
         sm.state = 2;
         sm.Save();
@@ -48,12 +49,16 @@ void JudgeController::GetTask(HttpRequest &request, HttpResponse &response)
 
 void JudgeController::service(HttpRequest &request, HttpResponse &response)
 {
+    QByteArray path = request.getPath();
     if (request.getParameter("KEY")!=JudgeKey)
         return response.setStatus(401);
-    if (request.getPath().startsWith("/judge/gettask"))
+    if (path.startsWith("/judge/test"))
+        return response.write("OK");
+    else if (path.startsWith("/judge/gettask"))
         return GetTask(request,response);
-    else if (request.getPath().startsWith("/judge/getsrc"))
+    else if (path.startsWith("/judge/getsrc"))
         return GetSrc(request,response);
-    else if (request.getPath().startsWith("/judge/getdata"))
+    else if (path.startsWith("/judge/getdata"))
         return GetData(request,response);
+    return response.Error404();
 }

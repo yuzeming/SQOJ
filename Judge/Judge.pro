@@ -20,3 +20,5 @@ SOURCES += main.cpp \
 
 HEADERS += \
     judger.h
+
+include(../lib/qtservice/src/qtservice.pri)

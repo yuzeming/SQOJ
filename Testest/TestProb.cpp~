@@ -1,0 +1,29 @@
+#include <cstdlib>
+#include <cstdio>
+#include <cstring>
+#include <iostream>
+
+using namespace std;
+
+//int Arr[10*1024*1024];
+int A,B;
+
+void Fuck()
+{
+	Fuck();
+}
+
+int main()
+{
+	//memset(Arr,1,sizeof(Arr));
+	freopen("A.in","r",stdin);
+	freopen("A.out","w",stdout);
+	scanf("%d%d",&A,&B);
+	printf("%d\n",A+B);
+	int * AAA;
+	//for (int i=1;i<=300000000;++i)
+		AAA=new int[20*1024*1024];
+		delete (AAA);
+	Fuck();
+//	return 201;
+}
