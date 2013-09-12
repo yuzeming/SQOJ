@@ -1,0 +1,5 @@
+{
+    cpp:["g++ %SRC% -Wall -O2 -o %EXE%","%EXE%"],
+    py:["cp %SRC% %EXE%","python %EXE%"]
+}
+

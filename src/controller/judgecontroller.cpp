@@ -50,7 +50,7 @@ void JudgeController::GetTask(HttpRequest &request, HttpResponse &response)
 void JudgeController::service(HttpRequest &request, HttpResponse &response)
 {
     QByteArray path = request.getPath();
-    if (request.getParameter("KEY")!=JudgeKey)
+    if (request.getParameter("key")!=JudgeKey)
         return response.setStatus(401);
     if (path.startsWith("/judge/test"))
         return response.write("OK");
