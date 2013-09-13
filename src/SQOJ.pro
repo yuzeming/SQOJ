@@ -38,12 +38,10 @@ SOURCES = main.cpp \
     controller/indexpage.cpp
 
 OTHER_FILES += \
-    ../etc/QtWebApp.ini \
+    ../etc/SQOJ.ini \
     ../etc/docroot/* \
     ../etc/templates/* \
-    ../doc/releasenotes.txt \
-    ../doc/license.txt \
-    ../doc/readme.txt
+    ../readme.md
 
 include(../lib/qtservice/src/qtservice.pri)
 include(../lib/bfLogging/src/bfLogging.pri)

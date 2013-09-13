@@ -2,6 +2,29 @@ SQOJ by Yuzeming
 ====
 SQOJ sTARq Online Judge (With Qt)
 
+#项目Github 
+http://github.com/yuzeming/SQOJ
+建议在Github上阅读这个文档。
+Followr me
+
+#界面截图
+snapshot 目录
+
+#编译 运行提示
+
+依赖库
+> apt-get install libctemplate2 libctemplate-dev
+
+运行需要加 -e 参数 以免注册服务。
+
+请把可执行文件的运行目录设置在SQOJ目录下。程序可以正常运行。
+如果运行失败（找不到文件），把SQOJ移动到/hoem/yzm/下。（我的开发环境）
+用户名/密码 yzm/a
+
+没有实现太多功能。
+自己太弱了 T_T 
+硬盘坏了一次，丢失了大量代码。
+
 #程序架构
 
 程序有两部分组成
@@ -22,7 +45,8 @@ Web前端基于QtWebApp编写。 重写了QtWebApp的小部分代码。
 依赖于 Qt5 ,Google Ctemplate.在编译前需要先安装。
 
 # 许可证信息
-程序使用GPL v2 许可证
+程序使用 GPL v2 许可证
+
 Google CTemplate 使用New BSD License许可，从这里code.google.com/p/ctemplate/‎ 可以获得源代码。
 QtWebApp 使用LGPL许可，从这里 http://stefanfrings.de/qtwebapp/index-en.html 可以获得源代码。
 
@@ -63,6 +87,7 @@ QtWebApp 使用LGPL许可，从这里 http://stefanfrings.de/qtwebapp/index-en.h
     提交代码并保存
   
   ToDo
+  
   1. 添加题目（目前的题目是手工添加的）
   2. 删除题目
   3. 隐藏题目（仅当管理员用户登陆时显示所有题目，以保证添加竞赛题目时保密）
@@ -88,6 +113,7 @@ QtWebApp 使用LGPL许可，从这里 http://stefanfrings.de/qtwebapp/index-en.h
     登出
   
   ToDo
+  
   1. 用户注册
   2. 用户禁用
   3. 显示用户通过的题目排名
@@ -187,6 +213,7 @@ QtWebApp 使用LGPL许可，从这里 http://stefanfrings.de/qtwebapp/index-en.h
   * static UserModel &FindByID(int id);
   
   ToDO
+  
   1. HASH 保存密码
 
 ### 其他部分

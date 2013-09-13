@@ -84,6 +84,9 @@ void Startup::start() {
     /*if (logSettings->value("bufferSize",0).toInt()>0 && logSettings->value("minLevel",0).toInt()>0) {
         qDebug("You see these debug messages because the logging buffer is enabled");
     }*/
+
+    ProbModel a;
+
     qWarning("ServiceHelper: Service has started");
 }
 
