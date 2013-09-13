@@ -109,3 +109,14 @@ acronym, abbr, span.caps { font-size: 0.9em; letter-spacing: .07em; }
 /*......Add by yuzeming....*/
 #login_div { margin:auto;width:200px }
 
+table.ProbList { 
+	width : 100%;
+}
+
+div.nifty h2 {
+	display: inline;
+}
+
+#submitTextArce {
+	width : 100%;
+}

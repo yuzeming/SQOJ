@@ -10,17 +10,18 @@ class ProbModel :public ModelBase
 public:
     static QDir ProbRoot;
     QString name;
+    QString title;
     int id;
     int show;
 
     QString readHTML();
     QString readConf();
 
-    ProbModel(QString _name=QString(),int _show=1);
+    ProbModel(QString _name=QString(), QString _title=QString(), int _show=1);
     ProbModel(const ProbModel &copy);
     bool Save();
 
-    static QStringList GetList(int page = 1,int item=30);
+    static QList<QStringList> GetList(int page = 1,int item=30);
     static ProbModel &Find(QString name);
     static ProbModel &FindByID(int id);
 };

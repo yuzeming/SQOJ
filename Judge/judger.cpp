@@ -302,7 +302,6 @@ void Judger::exec()
     }
     QFile datafile();
 
-
 }
 
 

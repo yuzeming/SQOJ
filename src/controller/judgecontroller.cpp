@@ -35,7 +35,7 @@ void JudgeController::GetTask(HttpRequest &request, HttpResponse &response)
     if (id.size()==1)
     {
         SubmitModel sm=SubmitModel::FindByID(id[0]);
-        ProbModel pm = ProbModel::FindByID(pid);
+        ProbModel pm = ProbModel::FindByID(sm.pid);
         QJsonObject obj;
         obj["id"]=sm.id;
         obj["pname"]=pm.name;

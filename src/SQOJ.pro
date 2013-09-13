@@ -13,10 +13,6 @@ HEADERS = \
     static.h \
     startup.h \
     requestmapper.h \
-    controller/dumpcontroller.h \
-    controller/formcontroller.h \
-    controller/fileuploadcontroller.h \
-    controller/sessioncontroller.h \
     controller/usercontroller.h \
     model/usermodel.h \
     model/probmodel.h \
@@ -24,15 +20,13 @@ HEADERS = \
     controller/probcontroller.h \
     model/submitmodel.h \
     controller/submitcontroller.h \
-    controller/judgecontroller.h
+    controller/judgecontroller.h \
+    controller/indexpage.h
 
 SOURCES = main.cpp \
     static.cpp \
     startup.cpp \
     requestmapper.cpp \
-    controller/dumpcontroller.cpp \
-    controller/formcontroller.cpp \
-    controller/fileuploadcontroller.cpp \
     controller/sessioncontroller.cpp \
     controller/usercontroller.cpp \
     model/usermodel.cpp \
@@ -41,7 +35,8 @@ SOURCES = main.cpp \
     controller/probcontroller.cpp \
     model/submitmodel.cpp \
     controller/submitcontroller.cpp \
-    controller/judgecontroller.cpp
+    controller/judgecontroller.cpp \
+    controller/indexpage.cpp
 
 OTHER_FILES += \
     ../etc/QtWebApp.ini \

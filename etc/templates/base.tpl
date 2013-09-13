@@ -20,7 +20,7 @@
 			</li>
 			<li class="current_page_item" ><a  href="/">首页</a></li>
 			<li class="page_item" ><a href="/problem/list/">题目</a></li>
-			<li class="page_item" ><a href="/contest/list/">比赛</a></li>
+			<!-- <li class="page_item" ><a href="/contest/list/">比赛</a></li> -->
 			{{#LOGIN}}
 			<li class="page_item" ><a href="/user/login/">登陆</a></li>
 			<li class="page_item" ><a href="/user/reg/">注册</a></li>

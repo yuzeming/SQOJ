@@ -24,12 +24,13 @@ void ProbController::list(HttpRequest &request, HttpResponse &response)
     HttpSession session=Static::sessionStore->getSession(request,response);
     int page = GetLastDir(request.getPath()).toInt();
     if (page==0) page = 1;
-    QStringList list = ProbModel::GetList(page);
+    QList<QStringList> list = ProbModel::GetList(page);
     TemplateDictionary dict("template");
     for (int i=0;i<list.size();++i)
     {
         TemplateDictionary * tmp = dict.AddSectionDictionary("PROB_LIST");
-        tmp->SetValue("PORB_NAME",list[i].toStdString());
+        tmp->SetValue("PORB_NAME",list[i][0].toStdString());
+        tmp->SetValue("PORB_TITLE",list[i][1].toStdString());
     }
     return response.write(Static::templateLoader->Render(dict,"problist",session));
 }
@@ -42,6 +43,7 @@ void ProbController::show(HttpRequest &request, HttpResponse &response)
     if (prob.id==0) return response.Error404();
     TemplateDictionary dict("template");
     dict.SetValue("PROB_NAME",name.toStdString());
+    dict.SetValue("PROB_TITLE",prob.title.toStdString());
     dict.SetValue("PROB_CONTENT",prob.readHTML().toStdString());
     return response.write(Static::templateLoader->Render(dict,"probshow",session));
 }
