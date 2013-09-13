@@ -279,8 +279,21 @@ Judge 评测端，运行与Linux环境下，支持多种语言编译。
   * double Diff(QString cmp,QString input,QString stdout, QString output, QString &Res);
     比较输出
     
-
   * void exec();
+    主执行函数
 
+## config.json
+    主要配置文件格式
+
+## data 目录
+    保存数据
+    子目录为Prob.Name （短名，唯一）
+    子目录下有config.json 为题目数据配置
+   
+## src 保存代码
+
+## tmp 临时文件
+
+#更新
 http://github.com/yuzeming/SQOJ
 

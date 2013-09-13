@@ -27,7 +27,6 @@ SOURCES = main.cpp \
     static.cpp \
     startup.cpp \
     requestmapper.cpp \
-    controller/sessioncontroller.cpp \
     controller/usercontroller.cpp \
     model/usermodel.cpp \
     model/probmodel.cpp \

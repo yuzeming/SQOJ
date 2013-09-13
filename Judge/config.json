@@ -1,53 +1,41 @@
-//Run JSON
+//Run JSON 提交记录格式
 {
-	pid:"TEST_1",
-	rid:12345,
-	src:"a.cpp",
-	lang:"cpp"
-	user : "yuzeming"
-	time : "2012-10-19 12:20:10"
+	pid:"TEST_1",	#题目名称
+	rid:12345,	#提交ID
+	lang:"cpp"	#语言名称
 }
 
-//Prob JSON
+//Prob JSON 题目配置格式
 {
-	name:"TEST_1",
-	time:1,
-	men:128,
-	comp:none,
-	data : [
-		["a1.in","a1.out"],
-		["a2.in","a2.out"]
+	name:"TEST_1",	#题目名称
+	comp:none,	#自定义比较器，用于非唯一解，非最优解部分分等情况
+	data : [	#数据数组
+		["a1.in","a1.out",1,128],	#输入文件，输出文件，时间限制，内存限制
+		["a2.in","a2.out",1,128]	
 	]
 }
 
-//Result JSON
+//Result JSON 评测结果格式
 {
-	rid:12345,
-	compile : none,
-	result:"Accepted",
+	rid:12345,	#提交ID
+	compile : ”“,	#编译提示
+	result:"Accepted", #评测结果
 	detail : [
-		[0.5,32,"Right"],
-		[0.5,32,"Right"]
+		[1,0.5,32,"Right"], #得分，用时，内存，评价说明
+		[1,0.5,32,"Wrong answer"]
 		]
 }
 
-//Conf JSOM
+//Conf JSOM	评测端配置文件
 {
-	name : "judge_0",
-	key : "AAAAA",
-	tmpdir : "/tmp/",
-	rundir : "/tmp/",
-	datadir : "/home/yzm/data",
-	compiler : {
+	name : "judge_0",	#评测端名字
+	key : "AAAAA",		#JudgeKey 身份验证
+	tmpdir : "/tmp/",	#临时目录
+	rundir : "/tmp/",	#运行目录
+	datadir : "/home/yzm/data",	#数据保存
+	compiler : {	#编译器配置 {{SRC}}会被替换为源代码名称，{{EXE}}为可执行文件名
 		cpp : ["g++ {{SRC}} -g -Wall -o {{EXE}}","{{EXE}}"],
 		java : ["javac {{SRC}} -g -Wall -o {{EXE}}.class","java {{EXE}}.class"]
 		python : ["python -c {{SRC}} {{EXE}}.pyc","python {{EXE}}.pyc"]
 	}
-}
-
-//User JSON
-{
-	username : "yzeming",
-	password : "a",
-	isAdmin : true,
 }
